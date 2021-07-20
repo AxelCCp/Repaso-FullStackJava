@@ -1,0 +1,30 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class D3_93_JRadioButtons {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+
+class MarcoRadio extends JFrame{
+	public MarcoRadio() {
+		setBounds(550,300,500,300);
+		LaminaRadio lamina1 = new LaminaRadio();
+		add(lamina1);
+	}
+}
+
+
+
+class LaminaRadio extends JPanel{
+	public LaminaRadio() {
+		
+	}
+}

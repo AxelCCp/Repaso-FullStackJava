@@ -1,0 +1,31 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class C2_76_79_RepasoMultFuentes {
+	public C2_76_79_RepasoMultFuentes () {
+		
+	}
+
+}
+
+
+
+class MarcoAccion1 extends JFrame{
+	public MarcoAccion1() {
+		setTitle("XXX");
+		setBounds();
+		
+		
+		
+	}
+	
+}
+
+
+class LaminaAccion1 extends JPanel{
+	public LaminaAccion1() {
+		
+	}
+}

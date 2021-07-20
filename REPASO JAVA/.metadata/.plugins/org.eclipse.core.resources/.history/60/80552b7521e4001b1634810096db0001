@@ -1,0 +1,15 @@
+package A2_AplicacionesGraficas;
+
+import java.awt.GraphicsEnvironment;
+
+//ESTE ARRAY NOS DEVUELVE LOS TIPOS DE LETRA QUE TENEMOS EN EL PC
+public class A6_62_TiposDeLetrasEnPC {
+	public static void main(String []xxx) {
+		//getLocalGraphicsEnvironment(): devuelve el entorto gráfico local
+		String []nombresDeFuentes = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames(); 
+	
+		for(String nombreFuente: nombresDeFuentes) {
+			System.out.println(nombreFuente);
+		}
+	}
+}

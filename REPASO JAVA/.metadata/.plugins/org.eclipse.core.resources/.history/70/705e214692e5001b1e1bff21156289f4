@@ -1,0 +1,38 @@
+package A2_AplicacionesGraficas;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class C2_76_79_RepasoMultFuentes {
+	public C2_76_79_RepasoMultFuentes () {
+		
+	}
+
+}
+
+
+
+class MarcoAccion1 extends JFrame{
+	public MarcoAccion1() {
+		setTitle("XXX");
+		Toolkit miPantalla = Toolkit.getDefaultToolkit();
+		Dimension tamanoPantalla = miPantalla.getScreenSize();
+		int alturaPantalla = tamanoPantalla.height;
+		int anchoPantalla = tamanoPantalla.width;
+		setBounds(anchoPantalla/2,alturaPantalla/2,anchoPantalla/4,alturaPantalla/4);
+		Image icono= miPantalla.getImage("src/A2_AplicacionesGraficas/iconoPirata.jpg");
+		
+		
+	}
+	
+}
+
+
+class LaminaAccion1 extends JPanel{
+	public LaminaAccion1() {
+		
+	}
+}

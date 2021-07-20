@@ -1,0 +1,66 @@
+package A2_AplicacionesGraficas;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.SystemColor;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class A7_62_TrabajndoConFuentes {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MarcoConFuentes marco1 = new MarcoConFuentes();
+		marco1.setVisible(true);
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}
+
+class MarcoConFuentes extends JFrame{
+	public MarcoConFuentes() {
+		setTitle("Prueba con Fuentes");
+		Toolkit miPantalla = Toolkit.getDefaultToolkit();
+		Dimension tamanoPantalla = miPantalla.getScreenSize();
+		int alturaPantalla = tamanoPantalla.height;
+		int anchoPantalla = tamanoPantalla.width;
+		setBounds(anchoPantalla/4,alturaPantalla/4,anchoPantalla/2,alturaPantalla/2);
+		Image icono = miPantalla.getImage("src/A2_AplicacionesGraficas/iconoPirata.jpg");
+		setIconImage(icono);
+		LaminaConFuentes lamina1 = new LaminaConFuentes();
+		lamina1.setBackground(SystemColor.window);
+		add(lamina1);
+		
+	}
+}
+
+class LaminaConFuentes extends JPanel implements ActionListener{
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D)g;
+		Font miFuente = new Font("Segoe UI", Font.BOLD,40);
+		g2.setFont(miFuente);
+		g2.drawString("Hi!", 300, 160);
+		
+		g2.setFont(new Font("Segoe UI", Font.CENTER_BASELINE,18));
+		g2.setColor(Color.DARK_GRAY);
+		g2.drawString("loading...", 290, 230);
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		Date tiempo = new Date();
+		
+	}
+}
+
+

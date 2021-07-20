@@ -1,0 +1,37 @@
+package A2_AplicacionesGraficas;
+
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class A3_59_PruebaDibujo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MarcoConDibujos miMarco = new MarcoConDibujos();
+		miMarco.setVisible(true);
+		miMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+}
+
+
+class MarcoConDibujos extends JFrame{
+	public MarcoConDibujos() {
+		setTitle("Prueba de dibujo");
+		setSize(400,400);
+		Toolkit miPantalla = Toolkit.getDefaultToolkit();
+		Image icono = miPantalla.getImage("src/A2_AplicacionesGraficas/IconoPirata3.gif");
+		setIconImage(icono);
+	}
+}
+
+class LaminaConFiguras extends JPanel{
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		
+	}
+}

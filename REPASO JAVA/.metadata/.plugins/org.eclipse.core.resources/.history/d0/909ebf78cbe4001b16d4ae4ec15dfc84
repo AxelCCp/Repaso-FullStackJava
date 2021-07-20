@@ -1,0 +1,14 @@
+package A2_AplicacionesGraficas;
+
+public class B4_72_EventosMouse {
+	
+
+}
+
+
+class MarcoRaton extends JFrame{
+	public MarcoRaton() {
+		setVisible(true);
+		setBounds(300,300,500,350);
+	}
+}

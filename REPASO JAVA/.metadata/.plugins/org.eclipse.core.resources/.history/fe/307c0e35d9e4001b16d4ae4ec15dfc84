@@ -1,0 +1,23 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class B7_74_EventosDeFoco {
+
+}
+
+
+class MarcoFoco extends JFrame{
+	public MarcoFoco() {
+		setVisible(true);
+		setBounds(300,300,600,450);
+		add(new LaminaFoco());
+		
+	}
+}
+
+
+class LaminaFoco extends JPanel{
+	
+}

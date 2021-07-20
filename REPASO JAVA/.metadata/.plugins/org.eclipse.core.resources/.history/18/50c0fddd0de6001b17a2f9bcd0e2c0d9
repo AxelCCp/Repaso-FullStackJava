@@ -1,0 +1,36 @@
+package A2_AplicacionesGraficas;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class D1_91_AreasDeTexto2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MarcoPruebaArea marco1 = new MarcoPruebaArea();
+		marco1.setVisible(true);
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+}
+
+
+class MarcoPruebaArea extends JFrame{
+	public MarcoPruebaArea() {
+		setTitle("Probando área de texto");
+		setBounds(500,300,500,350);
+		//ESTABLECEMOS UNA DISPOSICIÓN EN EL MISMO MARCO
+		setLayout(new BorderLayout());
+		laminaBotones = new JPanel();
+		
+		
+		
+	}
+	private JPanel laminaBotones;
+	private JButton BotonInsertar;
+	private JButton BotonSaltoLinea;
+}
+
+

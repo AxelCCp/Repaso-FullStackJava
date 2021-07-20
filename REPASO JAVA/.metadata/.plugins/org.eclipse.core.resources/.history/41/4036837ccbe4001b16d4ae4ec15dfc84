@@ -1,0 +1,20 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+
+public class B4_72_EventosMouse {
+	public static void main(String []xxx) {
+		MarcoRaton marco1 = new MarcoRaton();
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+
+}
+
+
+class MarcoRaton extends JFrame{
+	public MarcoRaton() {
+		setVisible(true);
+		setBounds(300,300,500,350);
+	}
+}

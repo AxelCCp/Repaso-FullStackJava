@@ -1,0 +1,16 @@
+package A2_AplicacionesGraficas;
+
+public class C2_76_79_RepasoMultFuentes {
+
+}
+
+
+
+class MarcoAccion extends JFrame{
+	
+}
+
+
+class LaminaAcción extends JPanel{
+	
+}

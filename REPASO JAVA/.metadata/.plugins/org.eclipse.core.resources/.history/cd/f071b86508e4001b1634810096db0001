@@ -1,0 +1,41 @@
+package A2_AplicacionesGraficas;
+
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class A5_61_TrabajandoColores {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MarcoConColor marco1 = new MarcoConColor();
+		marco1.setVisible(true);
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+}
+
+
+
+
+class MarcoConColor extends JFrame{
+	public MarcoConColor() {
+		setTitle("Prueba con colores");
+		Toolkit miPantalla = Toolkit.getDefaultToolkit();
+		Dimension tamanoPantalla =miPantalla.getScreenSize();
+		int alturaPantalla = tamanoPantalla.height;
+		int anchoPantalla = tamanoPantalla.width;
+		setBounds(alturaPantalla/4,anchoPantalla/4,anchoPantalla/2,anchoPantalla/2);
+		
+		LaminaConColor lamina1 = new LaminaConColor();
+		add(lamina1);
+	}
+	
+}
+
+
+class LaminaConColor extends JPanel{
+	
+}

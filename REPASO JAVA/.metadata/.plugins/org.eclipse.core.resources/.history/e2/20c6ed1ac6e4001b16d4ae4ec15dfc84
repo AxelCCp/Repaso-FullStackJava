@@ -1,0 +1,20 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+
+public class B3_71_EventosTeclado {
+	public static void main(String[]args) {
+		MarcoConTeclas marco1 = new MarcoConTeclas();
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+
+}
+
+
+class MarcoConTeclas extends JFrame{
+	public MarcoConTeclas() {
+		setVisible(true);
+		setBounds(700,300,600,450);
+	}
+}
