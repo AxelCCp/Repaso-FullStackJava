@@ -1,0 +1,30 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class D7_97_JSlider2 {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MarcoSlider2 marco1 = new MarcoSlider2();
+		marco1.setVisible(true);
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}
+
+
+
+class MarcoSlider2 extends JFrame{
+	public MarcoSlider2() {
+		setBounds(550,400,550,350);
+		LaminaSlider2 lamina = new LaminaSlider2();
+		add(lamina);
+	}
+}
+
+
+class LaminaSlider2 extends JPanel{
+	public LaminaSlider2() {
+		
+	}
+}

@@ -1,0 +1,33 @@
+package A2_AplicacionesGraficas;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+import javax.swing.SpinnerListModel;
+
+public class D8_98_JSpinner {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MarcoSpinner marco1 = new MarcoSpinner();
+		marco1.setVisible(true);
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+}
+
+class MarcoSpinner extends JFrame{
+	public MarcoSpinner() {
+		setBounds(550,350,550,350);
+		add(new LaminaSpinner());
+	}
+}
+
+class LaminaSpinner extends JPanel{
+	public LaminaSpinner() {
+		String[]lista = {"Enero","Febrero","Marzo","Abril"};
+		JSpinner control = new JSpinner(new SpinnerListModel(lista));
+		control.setPreferredSize(new Dimension(50,20));
+		add(control);
+	}
+}
