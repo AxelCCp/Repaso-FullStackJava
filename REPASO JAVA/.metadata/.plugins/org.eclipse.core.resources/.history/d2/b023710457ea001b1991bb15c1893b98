@@ -1,0 +1,34 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class E7_109_MenusEmergentes {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MarcoPopup marco1 = new MarcoPopup();
+		marco1.setVisible(true);
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+}
+
+
+class MarcoPopup extends JFrame{
+	public MarcoPopup() {
+		setBounds(100,100,300,250);
+		LaminaPopup lamina1 = new LaminaPopup();
+		add(lamina1);
+		
+	}
+}
+
+
+
+class LaminaPopup extends JPanel{
+	public LaminaPopup() {
+		
+	}
+}

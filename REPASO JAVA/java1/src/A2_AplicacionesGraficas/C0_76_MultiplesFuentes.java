@@ -38,9 +38,9 @@ class PanelAccion extends JPanel{
 	public PanelAccion() {
 		
 		//INSTANCIAMOS LA CLASE OYENTE
-		AccionColor accionAmarillo = new AccionColor("Amarillo",new ImageIcon("ruta"),Color.YELLOW);
-		AccionColor accionAzul = new AccionColor("Azul",new ImageIcon("ruta"),Color.BLUE);
-		AccionColor accionRojo = new AccionColor("Rojo",new ImageIcon("ruta"),Color.RED);
+		AccionColor accionAmarillo = new AccionColor("Amarillo",new ImageIcon("src/A2_AplicacionesGraficas/iconos/Yellow Ball.png"),Color.YELLOW);
+		AccionColor accionAzul = new AccionColor("Azul",new ImageIcon("src/A2_AplicacionesGraficas/iconos/Blue Ball.png"),Color.BLUE);
+		AccionColor accionRojo = new AccionColor("Rojo",new ImageIcon("src/A2_AplicacionesGraficas/iconos/Red Ball.png"),Color.RED);
 		
 		//PARA CREAR LOS BOTONES AHORA USAMOS UN CONSTRUCTOR DE JBUTTON QUE ACEPTA UN ARGUMENTO DE TIPO ACTION
 		JButton botonAmarillo = new JButton(accionAmarillo);

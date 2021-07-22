@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -11,6 +14,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.text.StyledEditorKit;
+import javax.swing.text.StyledEditorKit.ItalicAction;
 
 public class E4_106_ProcesadorTextoStyledEditorKit {
 
@@ -39,17 +43,17 @@ class LaminaProcesador3 extends JPanel{
 		fuente = new JMenu("Fuente");
 		estilo = new JMenu("Estilo");
 		tamano = new JMenu("Tamaño");
-		configuraMenu("Arial","Fuente","Arial",9,10);
-		configuraMenu("Courier","Fuente","Courier",9,10);
-		configuraMenu("Verdana","Fuente","Verdana",9,10);
+		configuraMenu("Arial","Fuente","Arial",9,10,"");
+		configuraMenu("Courier","Fuente","Courier",9,10,"");
+		configuraMenu("Verdana","Fuente","Verdana",9,10,"");
 		//
-		configuraMenu("Negrita","Estilo","",Font.BOLD,1);
-		configuraMenu("Cursiva","Estilo","",Font.ITALIC,1);
+		configuraMenu("Negrita","Estilo","",Font.BOLD,1,"src/A2_AplicacionesGraficas/iconos/baseline_format_bold_black_18dp.png");
+		configuraMenu("Cursiva","Estilo","",Font.ITALIC,1,"src/A2_AplicacionesGraficas/iconos/baseline_format_italic_black_18dp.png");
 		//
-		configuraMenu("12","Tamaño","",9,12);
-		configuraMenu("16","Tamaño","",9,16);
-		configuraMenu("20","Tamaño","",9,20);
-		configuraMenu("24","Tamaño","",9,24);
+		configuraMenu("12","Tamaño","",9,12,"");
+		configuraMenu("16","Tamaño","",9,16,"");
+		configuraMenu("20","Tamaño","",9,20,"");
+		configuraMenu("24","Tamaño","",9,24,"");
 		//
 		barra.add(fuente);
 		barra.add(estilo);
@@ -61,8 +65,8 @@ class LaminaProcesador3 extends JPanel{
 		add(area,BorderLayout.CENTER);
 	}
 	//========================================
-	public void configuraMenu(String rotulo,String menu,String tipoLetra, int estilos,int tam) {
-		JMenuItem elemMenu = new JMenuItem(rotulo);
+	public void configuraMenu(String rotulo,String menu,String tipoLetra, int estilos,int tam,String rutaIcono) {
+		JMenuItem elemMenu = new JMenuItem(rotulo,new ImageIcon(rutaIcono));
 		//======================
 		if(menu=="Fuente") {
 			fuente.add(elemMenu);
