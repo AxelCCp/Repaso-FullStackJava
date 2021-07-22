@@ -1,0 +1,32 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class F3_116_DisposicionEnMuelle {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MarcoMuelle marco1 = new MarcoMuelle();
+		marco1.setVisible(true);
+		marco1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+	}
+
+}
+
+
+
+class MarcoMuelle extends JFrame{
+	public MarcoMuelle() {
+		setBounds(300,400,1000,350);
+		LaminaMuelle lamina1 = new LaminaMuelle();
+		add(lamina1);
+	}
+}
+
+
+class LaminaMuelle extends JPanel{
+	public LaminaMuelle() {
+		
+	}
+}

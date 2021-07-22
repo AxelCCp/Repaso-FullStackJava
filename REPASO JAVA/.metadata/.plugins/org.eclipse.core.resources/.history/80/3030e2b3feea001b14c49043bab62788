@@ -1,0 +1,20 @@
+package A2_AplicacionesGraficas;
+
+import javax.swing.JFrame;
+
+public class F2_115_DisposicionesAvanzadasBox1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+
+
+class MarcoCaja extends JFrame{
+	public MarcoCaja() {
+		setTitle("Marco en la caja");
+		setBounds(600,350,200,200);
+	}
+}
