@@ -1,0 +1,29 @@
+package A3_practicas;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+public class A2_123_LaminaBotones extends JPanel {
+	public A2_123_LaminaBotones(String titulo, String[]opciones) {
+		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),titulo)); //ESTABLECEMOS TIPO DE BORDES
+		setLayout(new BoxLayout(this,BoxLayout.Y_AXIS)); //ESTABLECEMOS DISPOSICIÓN DE LAMINA, VER LA API.
+		ButtonGroup grupo = new ButtonGroup();
+		for(int i=0;i<opciones.length;i++) {
+			JRadioButton bot = new JRadioButton(opciones[i]);
+		    add(bot);
+		    grupo.add(bot);
+		    bot.setSelected(i==0);//POR DEFECTO APARECERÁ LA 1RA OPCIÓN
+		}
+	}
+	//METODO
+	public String dameSeleccion() {
+		ButtonModel miBoton = grupo.getSelection();
+		String x =miBoton.getActionCommand();
+		return "";
+	}
+	
+}

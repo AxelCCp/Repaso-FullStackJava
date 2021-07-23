@@ -1,0 +1,26 @@
+package A3_practicas;
+
+import java.awt.GridLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class A1_123_MarcoDialogos extends JFrame {
+	public A1_123_MarcoDialogos() {
+		setTitle("Prueba de Diálogos");
+		setBounds(200,100,600,450);
+		JPanel laminaCuadricula = new JPanel();
+		laminaCuadricula.setLayout(new GridLayout(2,3));
+		//
+		String [] primero = {"Mensaje","Confirmar","Opción","Entrada"};
+		laminaTipo = new A2_123_LaminaBotones("Tipo",primero);
+		laminaCuadricula.add(laminaTipo);
+		
+		laminaCuadricula.add(new A2_123_LaminaBotones("xxx", {"","","",""}));
+		
+		//
+		add(laminaCuadricula);
+		
+	}
+	private A2_123_LaminaBotones laminaTipo;
+	
+}

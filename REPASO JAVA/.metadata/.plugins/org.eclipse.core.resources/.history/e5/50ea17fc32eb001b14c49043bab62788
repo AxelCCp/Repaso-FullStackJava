@@ -1,0 +1,13 @@
+package A3_practicas;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+public class A2_123_LaminaBotones extends JPanel {
+	public A2_123_LaminaBotones(String titulo, String[]opciones) {
+		setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), titulo));
+		setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+	}
+
+}
