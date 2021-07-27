@@ -15,13 +15,14 @@ class LeerFichero {
 	public void lee() {
 		try {
 			entrada = new FileReader("C:/Users/Boo/Downloads/STREAMS.txt");
-			int c = entrada.read();
+			int c = 0;
 			while(c!=-1) {
 			//el método read devuelve -1 cuando llega al final.
 				c=entrada.read(); //guarda en c el caracter que esté evaluando a cada momento de while.
 				char letra = (char)c;
 				System.out.print(letra);
 			}
+			entrada.close();
 		} catch (IOException e) {
 			System.out.println("No se encontró el archivo");
 			e.printStackTrace();
