@@ -1,14 +1,14 @@
 package A8_AplicacionBancoThreads;
-
+//USAMOS "synchronized" PARA SINCRONIZAR EL METODO TRANFERENCIA()
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class A0_173_BancoSinSincronizar_V1 {
+public class A2_178_BancoSinSincronizar_V3 {
 	public static void main(String[]args) {
-		Banco b = new Banco();
+		Banco3 b = new Banco3();
 		for(int i=0;i<100;i++) {
-			EjecucionTransferencias r = new EjecucionTransferencias(b,i,2000);
+			EjecucionTransferencias3 r = new EjecucionTransferencias3(b,i,2000);
 			Thread t = new Thread(r);
 			t.start();
 		}
@@ -16,31 +16,36 @@ public class A0_173_BancoSinSincronizar_V1 {
 }
 
 
-class Banco{
-	public Banco() {
+class Banco3{
+	public Banco3() {
 		cuentas = new double[100];
 		//CARGAMOS LAS CUENTAS CON 2000 EUROS
 		for(int i=0;i<cuentas.length;i++) {
 			cuentas[i]=2000;
 		}
-		
+		//EL BLOQUEO SE DEBE ESTABLECER EN BASE A UNA CONDICIÓN
+		//saldoSuficiente = cierreBanco.newCondition();// YA NO SE NECESITA
 	}
 	
-	public void transferencia(int cuentaOrigen,int cuentaDestino,double cantidad) {
+	public synchronized void transferencia(int cuentaOrigen,int cuentaDestino,double cantidad) throws InterruptedException {
 		
 		//BLOQUEAMOS EN MÉTODO PARA QUE EL MÉTODO SEA RECORRIDO SOLO POR UN HILO A LA VEZ.
 		//ENCERRAMOS EL MÉTODO EN UN try/finally
-		cierreBanco.lock();
+		//cierreBanco.lock();
 		
-		try {
+		//try {
 		
 		//PARA QUE LA CANTIDAD A TRANSFERIR NO SEA SUPERIOR AL SALDO DE LA CTA.
-		if(cuentas[cuentaOrigen]<cantidad) {
-			//SI EL SALDO DE LA CTA ES INFERIOR A LA CANTIDAD, IMPRIME ESTO: 
-			System.out.println("---------------Cantidad insuficiente: " + cuentaOrigen + "... Saldo: " + cuentas[cuentaOrigen] + "... Cantidad: " + cantidad);
-			return;
-		}else {
-			System.out.println("-------------Cantidad OK-----------" + cuentaOrigen);
+		while(cuentas[cuentaOrigen]<cantidad) {
+			
+			//MIENTRAS LA CONDICIÓN DEL WHILE SEA TRUE, EL HILO DEBE PERMANECER A LA ESPERA.
+			//EL METODO LANZA UNA INTERRUPTEDEXCEPTION, SE LA PONEMOS AL MÉTODO.
+			//saldoSuficiente.await();
+			
+			
+			//METODO DE OBJECT,HACE LO MISMO QUE AWAIT() 
+			wait();
+		
 		}
 		//PARA QUE IMPRIMA EL HILO QUE HARÁ LA TRANSFERENCIA
 		System.out.println(Thread.currentThread());
@@ -57,12 +62,17 @@ class Banco{
 		//LLAMAMOS AL MÉTODO DE SALDO TOTAL
 		System.out.printf("Saldo total: %10.2f%n",getSaldoTotal());
 		
+		//DESPIERTA A LOS DEMÁS HILOS QUE ESTÁN ESPERANDO Y LES INFORMA DE LA OPERACIÓN QUE REALIZÓ  
+		//saldoSuficiente.signalAll();
 		
-		}finally {
+		//METODO DE OBJECT QUE INFORMA A LOS DEMÁS HILOS QUE YA SE HA TERMINADO DE EJECUTAR.
+		notifyAll();
+		
+		}//finally {
 			//DESBLOQUEAMOS PARA QUE PUEDA ENTRAR UN NUEVO HILO
-			cierreBanco.unlock();
-		}
-	}
+			//cierreBanco.unlock();
+		//}
+	//}
 	
 	public double getSaldoTotal() {
 		//VARIABLE QUE ALMACENA EL SALDO (SUMA) DE TODAS LAS CTAS
@@ -72,17 +82,15 @@ class Banco{
 		}
 		return sumaCuentas;
 	}
-	
-	
 	private final double[]cuentas;//ARRAY DONDE SE ALMACENARÁN LAS CUENTAS
-	private Lock cierreBanco = new ReentrantLock();
-	
+	//private Lock cierreBanco = new ReentrantLock();
+	//private Condition saldoSuficiente;//ReentrantLock hereda de Condition.
 }
 
 
-class EjecucionTransferencias implements Runnable{
+class EjecucionTransferencias3 implements Runnable{
 								//(obj Banco,cta origen, cantidad max a transferir)
-	public EjecucionTransferencias(Banco b, int de, double max) {
+	public EjecucionTransferencias3(Banco3 b, int de, double max) {
 		banco=b;
 		deLaCuenta=de;
 		cantidadMax=max;
@@ -109,7 +117,7 @@ class EjecucionTransferencias implements Runnable{
 		}
 		
 	}
-	private Banco banco;
+	private Banco3 banco;
 	private int deLaCuenta;
 	private double cantidadMax;
 }
