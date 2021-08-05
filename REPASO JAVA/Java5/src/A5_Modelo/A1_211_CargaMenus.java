@@ -13,7 +13,7 @@ public class A1_211_CargaMenus {
 		miConexion = new A0_211_Conexion();
 	}
 	
-	//MÉTODO QUE REALIZA LAS CONSULTAS A SECCIÓN
+	//MÉTODO QUE REALIZA LAS CONSULTAS A SECCIÓN Y PAISES
 	public String ejecutaConsultas() {
 		
 		A0_211_Productos miProducto = null;
