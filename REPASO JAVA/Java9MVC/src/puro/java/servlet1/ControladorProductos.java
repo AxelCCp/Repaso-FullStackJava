@@ -60,13 +60,34 @@ public class ControladorProductos extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				break;
 			
+			case "actualizarBBDD":
+				try {
+					actualizaProductos(request,response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+				
+			case "eliminar":
+				try {
+					eliminarProducto(request,response);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+				
 			default:
 				obtenerProductos(request,response);	
 		}	
 	}
 
 	
+
+
 	//MÉTODO QUE OBTIENE LA INFORMACIÓN DE LOS PRODUCTOS DE LA TABLA
 	private void obtenerProductos(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -102,7 +123,12 @@ public class ControladorProductos extends HttpServlet {
 		//CREAR UN OBJ DE TIPO PRODUCTO
 		Productos nuevoProducto = new Productos(codArticulo,seccion,nombreArticulo,precio,fecha,importado,paisDeOrigen);
 		//ENVIAR EL OBJ AL MODELO Y DESPUÉS INSERTAR EL OBJ PRODUCTO EN LA BBDD
-		modeloProductos.agregarElNuevoProducto(nuevoProducto);
+		try {
+			modeloProductos.agregarElNuevoProducto(nuevoProducto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//VOLVER A LISTAR LA TABLA DE PRODUCTOS CON EL OBJ INSERTADO
 		obtenerProductos(request,response);
 	}
@@ -120,6 +146,37 @@ public class ControladorProductos extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/ActualizaProducto.jsp");
 		dispatcher.forward(request, response);
 	}
+	
+	//ESTE MÉTODO ACTUALIZA LA INFORMACIÓN DEL PRODUCTO, SEGÚN LOS DATOS QUE CAMBIÓ EL USUARIO EN ActualizaProductos.jsp 
+	private void actualizaProductos(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		//LEER LOS DATOS QUE VIENE DEL FORMULARIO DE ACTUALIZAR
+		String codArticulo = request.getParameter("CArt");
+		String seccion = request.getParameter("seccion");
+		String nombreArticulo = request.getParameter("NArt");
+		String fecha = request.getParameter("fecha");
+		String precio = request.getParameter("precio");
+		String importado = request.getParameter("importado");
+		String paisDeOrigen = request.getParameter("POrig");
+		//CREAR UN OBJ DE TIPO PRODUCTO CON LA INFORMACIÓN QUE VIENE DEL FORMULARIO
+		Productos productoActualizado = new Productos(codArticulo,seccion,nombreArticulo,precio,fecha,importado,paisDeOrigen);
+		//ACTUALIZAR LA BASE DE DATOS CON LA INFORMACIÓN DEL OBJ PRODUCTO
+		modeloProductos.actualizarProducto(productoActualizado);
+		//VOLVER AL LISTADO CON LA INFORMACIÓN ACTUALIZADA
+		obtenerProductos(request,response);
+	}
+	
+	//MÉTODO QUE ELIMINA REGISTROS
+	private void eliminarProducto(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// CAPTURAR EL CÓDIGO ARTÍCULO
+		String codArticulo = request.getParameter("CArticulo");
+		//BORRAR PRODUCTO DE LA BASE DE DATOS
+		modeloProductos.eliminarProducto(codArticulo);
+		//VOLVER AL LISTADO DE PRODUCTOS
+		obtenerProductos(request,response);
+	}
+	
+	
 
 	//VARIABLE PARA CONECTAR AL SERVLETCONTROLADOR CON EL MODELO
 	private ModeloProductos modeloProductos;

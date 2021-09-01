@@ -16,6 +16,8 @@
 	
 	<!-- ENVIAMOS AL CONTROLADOR EL CÓDIGO DEL ARTÍCULO. JUNTO CON LA INFORMACIÓN DEL FORMULARIO, PARA MANDARLA
 	 ...DESPUES AL MODELO, CLASE QUE HARÁ LA ACTUALIZACIÓN. USAMOS NOMBRE DE VARIABLE DE CLASS PRODUCTOS "cArt"  -->
+	<!--${ProductoActualizar.cArt} : (1)NOMBRE QUE LE DAMOS A LA VARIABLE "elProducto", EN EL setAttribute, DENTRO DEL MÉT. cargaProductos()
+	(2)cArt  NOMBRE DE LA VARIABLE DEL CÓDIGO EN LA CLASE PRODUCTOS -->
 	<input type="hidden" name="CArt" value="${ProductoActualizar.cArt}">
 		
         <table width="50%" border="0">

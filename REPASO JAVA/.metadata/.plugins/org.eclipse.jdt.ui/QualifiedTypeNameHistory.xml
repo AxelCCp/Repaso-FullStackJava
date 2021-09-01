@@ -18,7 +18,6 @@
 <fullyQualifiedTypeName name="A6_Vista.A0_210_MarcoAplicacion"/>
 <fullyQualifiedTypeName name="A5_Modelo.A2_215_EjecutaConsultas"/>
 <fullyQualifiedTypeName name="A7_Controlador.A2_215_ControladorBotonEjecuta"/>
-<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.util.concurrent.Callable"/>
 <fullyQualifiedTypeName name="java.sql.CallableStatement"/>
 <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
@@ -60,4 +59,5 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+<fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 </qualifiedTypeNameHistroy>

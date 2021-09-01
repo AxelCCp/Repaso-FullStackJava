@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -56,7 +55,7 @@ public class ModeloProductos {
 	
 	
 	//ESTE MÉTODO ES LLAMADO DESDE EL CONTROLADOR E INSERTA EL OBJETO QUE LE LLEGA POR PARÁMETRO
-	public void agregarElNuevoProducto(Productos nuevoProducto) {
+	public void agregarElNuevoProducto(Productos nuevoProducto) throws Exception {
 		
 		Connection miConexion=null;
 		PreparedStatement miStatement=null;
@@ -84,6 +83,9 @@ public class ModeloProductos {
 		
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally {
+			miStatement.close();
+			miConexion.close();
 		}
 	}
 	
@@ -109,7 +111,7 @@ public class ModeloProductos {
 		miResultset=miStatement.executeQuery();
 		//OBTENER LOS DATOS DE RESPUESTA
 		if(miResultset.next()) {
-			//String c_art = miResultset.getString("CÓDIGOARTÍCULO"); NO LO NECESITAMOS ESTA VEZ.
+			String c_art = miResultset.getString("CÓDIGOARTÍCULO"); 
 			String seccion = miResultset.getString("SECCIÓN");
 			String n_art = miResultset.getString("NOMBREARTÍCULO");
 			String precio = miResultset.getString("PRECIO");
@@ -118,7 +120,7 @@ public class ModeloProductos {
 			String p_orig = miResultset.getString("PAÍSDEORIGEN");
 			
 			//ALMACENAMOS LOS DATOS DE LAS VARIABLES EN LA VARIABLE TEMPORAL temProd
-			elProducto = new Productos(seccion,n_art,precio,fecha,importado,p_orig);
+			elProducto = new Productos(c_art,seccion,n_art,precio,fecha,importado,p_orig);
 		}else {
 			throw new Exception("No hemos encontrado el producto con código artículo: " +  cArticulo);
 		}
@@ -130,10 +132,67 @@ public class ModeloProductos {
 	}
 	
 	
+	//MÉTODO QUE RECIBE DESDE EL CONTROLADOR, LA INFORMACIÓN DEL PRODUCTO QUE ESTE MÉTODO DEBE ACTUALIZAR
+	public void actualizarProducto(Productos productoActualizado) throws Exception {
+		Connection miConexion=null;
+		PreparedStatement miStatement=null;
+		//ESTABLECER LA CONEXIÓN CON LA BASE DE DATOS
+		try {
+		miConexion= origenDatos.getConnection();
+		//CREAR SENTENCIA SQL
+		String sql = "UPDATE PRODUCTOS SET SECCIÓN=?, NOMBREARTÍCULO=?, PRECIO=?, FECHA=?, IMPORTADO=?, PAÍSDEORIGEN=? " +
+					 "WHERE CÓDIGOARTÍCULO=?";
+		//CREAR CONSULTA PREPARADA
+		miStatement=miConexion.prepareStatement(sql);
+		//ESTABLECER LOS PARÁMETROS
+		miStatement.setString(1, productoActualizado.getSeccion());
+		miStatement.setString(2, productoActualizado.getnArt());
+		miStatement.setString(3, productoActualizado.getPrecio());
+		miStatement.setString(4, productoActualizado.getFecha());
+		miStatement.setString(5, productoActualizado.getImportado());
+		miStatement.setString(6, productoActualizado.getpOrig());
+		miStatement.setString(7, productoActualizado.getcArt());
+		//EJECUTAR LA INSTRUCCIÓN SQL
+		miStatement.execute();
+		}finally {
+			miStatement.close();
+			miConexion.close();
+		}
+		
+	}
 	
+	
+	public void eliminarProducto(String codArticulo) throws Exception {
+		
+		Connection miConexion=null;
+		PreparedStatement miStatement=null;
+		//ESTABLECER LA CONEXIÓN CON LA BASE DE DATOS
+		try {
+		miConexion= origenDatos.getConnection();
+		//CREAR INSTRUCCIÓN SQL DE ELIMINACIÓN
+		String sql="DELETE FROM PRODUCTOS WHERE CÓDIGOARTÍCULO=?";
+		//PREPARAR LA CONSULTA
+		miStatement=miConexion.prepareStatement(sql);
+		//ESTABLECER PARÁMETROS DE CONSULTA. LE PASAMOS codArticulo PQ EL MÉTODO RECIBE EL CÓDIGO Y NO EL OBJ PRODUCTO CM EN LOS OTROS MÉTODOS.
+		miStatement.setString(1, codArticulo);
+		//EJECUTAR SENTENCIA SQL
+		miStatement.execute();
+		}finally {
+			miStatement.close();
+			miConexion.close();
+		}
+	}
 	
 	//VARIABLE DONDE SE ALMACENARÁ EL POOL DE CONEXIÓN
 	private DataSource origenDatos;
+
+
+	
+
+
+
+
+	
 
 
 

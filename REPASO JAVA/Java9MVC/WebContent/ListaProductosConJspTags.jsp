@@ -54,6 +54,13 @@
 			<!-- CARGAMOS EL CÓDIGO DEL ARTÍCULO EN EL LINK -->
 			<c:param name="CArticulo" value="${p.cArt }"></c:param>
 		</c:url>
+		
+		<!-- LINK PARA ELIMINAR REGISTROS CON SUCAMPO CLAVE -->
+		<c:url var="linkTempEliminar" value="ControladorProductos">
+			<c:param name="instruccion" value="eliminar"></c:param>
+			<c:param name="CArticulo" value="${p.cArt }"></c:param>
+		</c:url>
+		
 			<tr>
 				<td class="filas">${p.cArt }</td>
 				<td class="filas">${p.seccion }</td>
@@ -62,7 +69,7 @@
 				<td class="filas">${p.fecha }</td>
 				<td class="filas">${p.importado }</td>
 				<td class="filas">${p.pOrig }</td>
-				<td class="filas"><a href="${linkTemp}">Actualizar</a></td>
+				<td class="filas"><a href="${linkTemp}">Actualizar</a>&nbsp;&nbsp;<a href="${linkTempEliminar}">Eliminar</a></td>
 			</tr>
 		</c:forEach>
 	</table>
